@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CRUD Operation</title><!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
+	<style>
+		*{text-align: center;} h1{margin-top: 3em;}
+		table {margin: 0 auto; border-collapse: collapse; width: 50%;}
+		th {border: 1px solid #ddd; padding: .5em;}
+	</style>
+</head>
+<body>
+<% if(typeof editData != 'undefined'){ %>
+	<h1><%= editData %></h1>
+	<% if(typeof editId != 'undefined'){ %>
+		<form method="POST" action="/crud/edit/<%= editId %>">
+			<input type="submit" value="Update Data">
+		</form>
+	<% } %>
+<% } else { %>
+	<h1>CRUD Operation (Simulated)</h1>
+	<h3>This is View Page</h3><!-- <h4>Create Data</h4> -->
+	<form method="POST" action="/crud/create">
+		<input id="create" type="number" name="createN" placeholder="type a no."/>
+		<input type="submit" value="Create Data">
+	</form>
+<% } %>
+	<p/>
+	<table border="1">
+		<tr>
+			<th><a href="/crud/form">Crud Form (HOME)</a></th>
+			<th><!--<a href="/crud/fetch">Fetch Data</a>-->
+				<h4>Fetch Data<br/>(Retrieve)</h4>
+				<form method="post" action="/crud/fetch">
+					<input id="fetch" type="number" name="fetchN" placeholder="type a no."/><p/>
+					<input type="submit" value="Submit"/>
+				</form>
+			</th>
+			<th><!--<a href="/crud/edit/5">Edit Data</a><p/>-->
+				<h4>Edit Data</h4>
+				<form method="post" action="/crud/edit">
+					<input id="edit" type="number" name="editN" placeholder="type a no."/><p/>
+					<input type="submit" value="Submit"/>
+				</form>
+			</th>
+			<th><!--<a href="/crud/delete/5">Delete Data</a>-->
+				<h4>Delete Data</h4>
+				<form method="post" action="/crud/delete">
+					<input id="delete" type="number" name="deleteN" placeholder="type a no."/><p/>
+					<input type="submit" value="Submit"/>
+				</form>
+			</th>
+		</tr>
+	</table>
+	<p/>
+	<form method="post" action="/game">
+		<input id="tst" type="text" name="kukoc" placeholder="key in your words"/>
+		<input type="submit" value="Submit"/>
+	</form>
+	<b id="show"></b>
+	<% if(typeof(name) != 'undefined'){ %>
+		<h2 style="color: #F00;"><%= name %></h2>
+	<% } %>
+</body>
+<!-- <script src="../jquery-3.5.0.js"></script> --><!--本機檔案匯入somehow無效,非得如下線上匯入不可-->
+<!-- <script src="https://code.jquery.com/jquery-3.5.0.js"></script> -->
+<script>
+	// $("#tst").keyup(function() {
+	// 	$("#show").text($(this).val());
+	// });
+	// const input = document.querySelector('#tst');
+	// input.addEventListener("keyup", function (e) {//console.log(e);
+	// 	document.querySelector('#show').innerHTML = this.value;
+	// });
+	document.querySelector('#tst').onkeyup = () => {
+		document.querySelector('#show').innerHTML = this.value;
+	};
+	if ( document.URL.includes("crud") && !document.URL.includes("form") ) {
+		document.querySelector("h1").style.color = "#F00";}
+</script>
+</html>

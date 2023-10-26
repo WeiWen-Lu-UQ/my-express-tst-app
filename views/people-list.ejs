@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>People List</title>
+</head>
+<body>
+  <h1>People List</h1>
+  <table border="1" cellSpacing="0" cellPadding="5">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let person of people) { %>
+        <tr>
+          <td><%= person.name %></td>
+          <td><%= person.age %></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</body>
+</html>
