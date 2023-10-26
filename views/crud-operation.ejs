@@ -71,7 +71,7 @@
 	// input.addEventListener("keyup", function (e) {//console.log(e);
 	// 	document.querySelector('#show').innerHTML = this.value;
 	// });
-	document.querySelector('#tst').onkeyup = () => {
+	document.querySelector('#tst').onkeyup = function(){
 		document.querySelector('#show').innerHTML = this.value;
 	};
 	if ( document.URL.includes("crud") && !document.URL.includes("form") ) {
